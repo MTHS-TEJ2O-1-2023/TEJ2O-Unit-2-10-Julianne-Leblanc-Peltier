@@ -6,12 +6,12 @@
 */
 
 // variables
-let lightvalue: number = 0
+let amountOfLight: number = 0
 let neopixelStrip: neopixel.Strip = null
 
 // screen setup
 basic.clearScreen()
-lightvalue = input.lightLevel()
+amountOfLight = input.lightLevel()
 neopixelStrip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
 neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Black))
 neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Black))
@@ -20,23 +20,30 @@ neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Black))
 neopixelStrip.show()
 basic.showIcon(IconNames.Happy)
 
+// depending on light level, turns on neopixels
 input.onButtonPressed(Button.A, function () {
-  lightvalue = input.lightLevel()
-  if (lightvalue <= 51) {
+  amountOfLight = input.lightLevel()
+  // if light level is less than 51, none (0) neopixels turn on
+  if (amountOfLight <= 51) {
     neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Black))
     }
 
-  if (lightvalue >= 52) {
+  // if light level is equal to or more than 52, 1 neopixel turns on
+  if (amountOfLight >= 52) {
     neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Yellow))
     neopixelStrip.show()
     }
-  if (lightvalue >= 104) {
+
+  // if light level is equal to or more than 104, 2 neopixels turn on
+  if (amountOfLight >= 104) {
     neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Yellow))
     neopixelStrip.show()
     neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Yellow))
     neopixelStrip.show()
     }
-  if (lightvalue >= 156) {
+
+  // if light level is equal to or more than 156, 3 neopixels turn on
+  if (amountOfLight >= 156) {
     neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Yellow))
     neopixelStrip.show()
     neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Yellow))
@@ -45,7 +52,8 @@ input.onButtonPressed(Button.A, function () {
     neopixelStrip.show()
     }
 
-  if (lightvalue >= 208) {
+  // if light level is equal to or more than 208, all (4) neopixels turn on
+  if (amountOfLight >= 208) {
     neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Yellow))
     neopixelStrip.show()
     neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Yellow))
@@ -64,7 +72,7 @@ input.onButtonPressed(Button.B, function () {
   neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Black))
   neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Black))
   neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.Black))
-    neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Black))
-    neopixelStrip.show()
-    basic.showIcon(IconNames.Happy)
+  neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Black))
+  neopixelStrip.show()
+  basic.showIcon(IconNames.Happy)
 })
