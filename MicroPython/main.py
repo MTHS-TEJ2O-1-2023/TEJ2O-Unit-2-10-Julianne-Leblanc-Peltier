@@ -24,7 +24,7 @@ display.show(Image.HAPPY)
 while True:
     # if button a is pressed, depending on light level, turns on neopixels
     if button_a.is_pressed():
-        display.show(Image.HAPPY)
+        display.show(Image.Yes)
         neopixelstrip[0]
 
         # if light level is equal to or below 51, none of the neopixels
@@ -74,4 +74,4 @@ while True:
         neopixelstrip[2] = (0, 0, 0)
         neopixelstrip[3] = (0, 0, 0)
         neopixelstrip.show()
-        display.show(Image.HAPPY)
+        display.show(Image.SAD)
